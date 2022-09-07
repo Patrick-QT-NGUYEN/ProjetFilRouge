@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Netflix_Clone_API_Back.Tools;
 using Microsoft.Data.SqlClient;
+using Netflix_Clone_API_Back.Tools;
 using Netflix_Clone_API_Back.Classes;
 using System.Diagnostics.SymbolStore;
-using System.Data.SqlClient;
 
 namespace Netflix_Clone_API_Back.Classes
 {
     internal class Episodes
     {
         //parametre Episode
-        //private int id;
-        private int episodesId;
+        private int id;
+        //private int episodesId;
         private string nameEpisode;
         private int nbEpisodes;
         //private string descriptionEpisode;
@@ -38,10 +37,10 @@ namespace Netflix_Clone_API_Back.Classes
 
         }
 
-        public Episodes(int episodesId, string nameEpisode, string lien, int nbEpisodes, int saisonId, string saisonsImg, string saisonLien, DateTime saisonAnnees)
+        public Episodes(int Id, string nameEpisode, string lien, int nbEpisodes, int saisonId, string saisonsImg, string saisonLien, DateTime saisonAnnees, int id)
         {
-            // this.Id = id;
-            this.EpisodesId = episodesId;
+            this.id = id;
+            //this.EpisodesId = episodesId;
             this.NameEpisode = nameEpisode;
             //this.DescriptionEpisode = descriptionEpisode;
             Lien = lien;
@@ -50,12 +49,13 @@ namespace Netflix_Clone_API_Back.Classes
             this.saisonImg = saisonLien;
             this.saisonLien = saisonLien;
             this.saisonAnnees = saisonAnnees;
-
+            
         }
 
         //episode
-        //public int Id { get => id; set => id = value; }
-        public int EpisodesId { get => episodesId; set => episodesId = value; }
+        
+        public int Id { get => id; set => id = value; }
+        //public int EpisodesId { get => episodesId; set => episodesId = value; }
         public string NameEpisode { get => nameEpisode; set => nameEpisode = value; }
         // public string DescriptionEpisode { get => descriptionEpisode; set => descriptionEpisode = value; }
         public string Lien { get => Lien; set => Lien = value; }
@@ -66,207 +66,206 @@ namespace Netflix_Clone_API_Back.Classes
         public string SaisonLien { get => saisonLien; set => saisonLien = value; }
         public DateTime SaisonAnnees { get => saisonAnnees; set => saisonAnnees = value; }
 
+        #region get getAll add Update delete
+        //public (bool, Episodes) Get(int id)
+        //{
+        //    //Episodes episodes = new Episodes();
+        //    Episodes episodes = null;
+        //    bool found = false;
+
+        //    // Création d'un instance de connection
+        //    _connection = Connection.New;
+
+        //    // Prépartion de la commande
+        //    _request = "SELECT e.EpisodesId, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
+        //        "FROM EPISODES AS e" +
+        //        "WHERE e.id = @Id";
+
+        //    // Préparation de la commande
+        //    _command = new SqlCommand(_request, _connection);
+
+        //    // Ajout des paramètres de la commande
+        //    _command.Parameters.Add(new SqlParameter("@Id", id));
+
+        //    // Ouverture de la connexion
+        //    _connection.Open();
+
+        //    // Execution de la commande
+        //    _reader = _command.ExecuteReader();
+
+        //    if (_reader.Read())
+        //    {
+        //        episodes = new Episodes()
+        //        {
+        //            episodesId = _reader.GetInt32(0),
+        //            nameEpisode = _reader.GetString(1),
+        //            nbEpisodes = _reader.GetInt32(2),
+        //            Lien = _reader.GetString(3),
+        //            saisonId = _reader.GetInt32(4),
+        //            saisonImg = _reader.GetString(5),
+        //            saisonLien = _reader.GetString(6),
+        //            saisonAnnees = (DateTime)_reader.GetDateTime(7),
+        //        };
+        //        found = true;
+        //    }
+        //    _reader.Close();
+
+        //    // Libération de l'objet command
+        //    _command.Dispose();
+
+        //    // Fermeture de la connection à la BDD
+        //    _connection.Close();
+
+        //    // Retour de la liste de contact
+        //    return (found, episodes);
 
 
-        public (bool, Episodes) Get(int id)
-        {
-            //Episodes episodes = new Episodes();
-            Episodes episodes = null;
-            bool found = false;
+        //}
 
-            // Création d'un instance de connection
-            _connection = Connection.New;
+        //public static List<Episodes> GetAll()
+        //{
+        //    List<Episodes> episodes = new List<Episodes>();
 
-            // Prépartion de la commande
-            _request = "SELECT e.EpisodesId, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
-                "FROM EPISODES AS e" +
-                "WHERE e.id = @Id";
+        //    // Création d'un instance de connection
+        //    SqlConnection connection = Connection.New;
 
-            // Préparation de la commande
-            _command = new SqlCommand(_request, _connection);
+        //    // Prépartion de la commande
+        //    string request = "SELECT e.EpisodesId, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
+        //        "FROM EPISODES AS e" +
+        //        "WHERE e.id = @Id";
 
-            // Ajout des paramètres de la commande
-            _command.Parameters.Add(new SqlParameter("@Id", id));
+        //    // Préparation de la commande
+        //    SqlCommand command = new SqlCommand(request, connection);
 
-            // Ouverture de la connexion
-            _connection.Open();
+        //    // Ouverture de la connexion
+        //    connection.Open();
 
-            // Execution de la commande
-            _reader = _command.ExecuteReader();
+        //    // Execution de la commande
+        //    SqlDataReader reader = command.ExecuteReader();
 
-            if (_reader.Read())
-            {
-                episodes = new Episodes()
-                {
-                    episodesId = _reader.GetInt32(0),
-                    nameEpisode = _reader.GetString(1),
-                    nbEpisodes = _reader.GetInt32(2),
-                    Lien = _reader.GetString(3),
-                    saisonId = _reader.GetInt32(4),
-                    saisonImg = _reader.GetString(5),
-                    saisonLien = _reader.GetString(6),
-                    saisonAnnees = (DateTime)_reader.GetDateTime(7),
-                };
-                found = true;
-            }
-            _reader.Close();
+        //    while (reader.Read())
+        //    {
+        //        Episodes episode = new Episodes()
+        //        {
+        //            id = reader.GetInt32(0),
+        //            nameEpisode = reader.GetString(1),
+        //            nbEpisodes = reader.GetInt32(2),
+        //            Lien = reader.GetString(3),
 
-            // Libération de l'objet command
-            _command.Dispose();
-
-            // Fermeture de la connection à la BDD
-            _connection.Close();
-
-            // Retour de la liste de contact
-            return (found, episodes);
+        //            saisonId = reader.GetInt32(4),
+        //            saisonImg = reader.GetString(5),
+        //            saisonLien = reader.GetString(6),
+        //            saisonAnnees = (DateTime)reader.GetDateTime(7),
 
 
-        }
+        //        };
+        //        episodes.Add(episode);
+        //    }
+        //    reader.Close();
 
+        //    command.Dispose();
 
-        public static List<Episodes> GetAll()
-        {
-            List<Episodes> episodes = new List<Episodes>();
+        //    connection.Close();
 
-            // Création d'un instance de connection
-            SqlConnection connection = Connection.New;
+        //    return episodes;
+        //}
 
-            // Prépartion de la commande
-            string request = "SELECT e.EpisodesId, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
-                "FROM EPISODES AS e" +
-                "WHERE e.id = @Id";
+        //public virtual int Add()
+        //{
+        //    // Création d'un instance de connection
+        //    _connection = Connection.New;
+        //    // Prépartion de la commande
+        //    _request = "INSERT INTO Episodes (EpisodesId, NameEpisodes, NbEpisodes, Lien, SaisonId, SaisonImg, SaisonLien, SaisonAnnees) OUTPUT INSERTED.ID VALUES (@EpisodesId, @NameEpisodes, @NbEpisodes, @Lien, @SaisonId, @SaisonImg, @SaisonLien, @SaisonAnnees)";
 
-            // Préparation de la commande
-            SqlCommand command = new SqlCommand(request, connection);
+        //    // Préparation de la commande
+        //    _command = new SqlCommand(_request, _connection);
 
-            // Ouverture de la connexion
-            connection.Open();
-
-            // Execution de la commande
-            SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Episodes episode = new Episodes()
-                {
-                    episodesId = reader.GetInt32(0),
-                    nameEpisode = reader.GetString(1),
-                    nbEpisodes = reader.GetInt32(2),
-                    Lien = reader.GetString(3),
-
-                    saisonId = reader.GetInt32(4),
-                    saisonImg = reader.GetString(5),
-                    saisonLien = reader.GetString(6),
-                    saisonAnnees = (DateTime)reader.GetDateTime(7),
-
-
-                };
-                episodes.Add(episode);
-            }
-            reader.Close();
-
-            command.Dispose();
-
-            connection.Close();
-
-            return episodes;
-        }
-
-
-
-        public virtual int Add()
-        {
-            // Création d'un instance de connection
-            _connection = Connection.New;
-            // Prépartion de la commande
-            _request = "INSERT INTO Episodes (EpisodesId, NameEpisodes, NbEpisodes, Lien, SaisonId, SaisonImg, SaisonLien, SaisonAnnees) OUTPUT INSERTED.ID VALUES (@EpisodesId, @NameEpisodes, @NbEpisodes, @Lien, @SaisonId, @SaisonImg, @SaisonLien, @SaisonAnnees)";
-
-            // Préparation de la commande
-            _command = new SqlCommand(_request, _connection);
-
-            // Ajout des paramètres de la commande
-            //Episode
-            _command.Parameters.Add(new SqlParameter("@EpisodesId", episodesId));
-            _command.Parameters.Add(new SqlParameter("@NameEpisode", nameEpisode));
-            _command.Parameters.Add(new SqlParameter("@NbEpisodes", NbEpisodes));
-            _command.Parameters.Add(new SqlParameter("@Lien", Lien));
-            //Saison
-            _command.Parameters.Add(new SqlParameter("@SaisonId", SaisonId));
-            _command.Parameters.Add(new SqlParameter("@SaisonImg", SaisonImg));
-            _command.Parameters.Add(new SqlParameter("@SaisonLien", SaisonLien));
-            _command.Parameters.Add(new SqlParameter("@SaisonAnnees", SaisonAnnees));
+        //    // Ajout des paramètres de la commande
+        //    //Episode
+        //    _command.Parameters.Add(new SqlParameter("@EpisodesId", episodesId));
+        //    _command.Parameters.Add(new SqlParameter("@NameEpisode", nameEpisode));
+        //    _command.Parameters.Add(new SqlParameter("@NbEpisodes", NbEpisodes));
+        //    _command.Parameters.Add(new SqlParameter("@Lien", Lien));
+        //    //Saison
+        //    _command.Parameters.Add(new SqlParameter("@SaisonId", SaisonId));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonImg", SaisonImg));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonLien", SaisonLien));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonAnnees", SaisonAnnees));
             
 
 
-            _connection.Open();
-            int Id = (int)_command.ExecuteScalar();
+        //    _connection.Open();
+        //    int Id = (int)_command.ExecuteScalar();
 
-            _command.Dispose();
-            _connection.Close();
+        //    _command.Dispose();
+        //    _connection.Close();
 
-            return Id;
+        //    return Id;
 
-        }
-        public virtual bool Update()
-        {
-            _connection = Connection.New;
+        //}
 
-            _request = "UPDATE Episodes SET EpisodesId = @EpisodesId , NameEpisode = @NameEpisode, NbEpisodes = @NbEpisodes, Lien = @Lien, SaisonId = @SaisonId, SaisonImg = @SaisonImg, SaisonLien = @SaisonLien, SaisonAnnees = @SaisonAnnees WHERE id=EpisodesId";
+        //public virtual bool Update()
+        //{
+        //    _connection = Connection.New;
 
-            // Préparation de la commande
-            _command = new SqlCommand(_request, _connection);
+        //    _request = "UPDATE Episodes SET EpisodesId = @EpisodesId , NameEpisode = @NameEpisode, NbEpisodes = @NbEpisodes, Lien = @Lien, SaisonId = @SaisonId, SaisonImg = @SaisonImg, SaisonLien = @SaisonLien, SaisonAnnees = @SaisonAnnees WHERE id=EpisodesId";
 
-            // Ajout des paramètres de la commande
-            //Episode
-            _command.Parameters.Add(new SqlParameter("@EpisodesId", episodesId));
-            _command.Parameters.Add(new SqlParameter("@NameEpisode", nameEpisode));
-            _command.Parameters.Add(new SqlParameter("@NbEpisodes", NbEpisodes));
-            _command.Parameters.Add(new SqlParameter("@Lien", Lien));
-            //Saison
-            _command.Parameters.Add(new SqlParameter("@SaisonId", SaisonId));
-            _command.Parameters.Add(new SqlParameter("@SaisonImg", SaisonImg));
-            _command.Parameters.Add(new SqlParameter("@SaisonLien", SaisonLien));
-            _command.Parameters.Add(new SqlParameter("@SaisonAnnees", SaisonAnnees));
+        //    // Préparation de la commande
+        //    _command = new SqlCommand(_request, _connection);
 
-            _connection.Open();
-            int nbLignes = _command.ExecuteNonQuery();
+        //    // Ajout des paramètres de la commande
+        //    //Episode
+        //    _command.Parameters.Add(new SqlParameter("@EpisodesId", episodesId));
+        //    _command.Parameters.Add(new SqlParameter("@NameEpisode", nameEpisode));
+        //    _command.Parameters.Add(new SqlParameter("@NbEpisodes", NbEpisodes));
+        //    _command.Parameters.Add(new SqlParameter("@Lien", Lien));
+        //    //Saison
+        //    _command.Parameters.Add(new SqlParameter("@SaisonId", SaisonId));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonImg", SaisonImg));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonLien", SaisonLien));
+        //    _command.Parameters.Add(new SqlParameter("@SaisonAnnees", SaisonAnnees));
 
-            // Libération de l'objet command
-            _command.Dispose();
-            _connection.Close();
+        //    _connection.Open();
+        //    int nbLignes = _command.ExecuteNonQuery();
 
-            return nbLignes > 0;
-        }
-        public virtual bool Delete()
-        {
+        //    // Libération de l'objet command
+        //    _command.Dispose();
+        //    _connection.Close();
 
-            // Création d'un instance de connection
-            _connection = Connection.New;
+        //    return nbLignes > 0;
+        //}
 
-            // Prépartion de la commande
-            _request = "DELETE PERSON WHERE id=@EpisodesId";
+        //public virtual bool Delete()
+        //{
+
+        //    // Création d'un instance de connection
+        //    _connection = Connection.New;
+
+        //    // Prépartion de la commande
+        //    _request = "DELETE PERSON WHERE id=@EpisodesId";
 
 
-            // Préparation de la commande
-            _command = new SqlCommand(_request, _connection);
+        //    // Préparation de la commande
+        //    _command = new SqlCommand(_request, _connection);
 
-            // Ajout des paramètres de la commande
-            _command.Parameters.Add(new SqlParameter("@EpisodesId", EpisodesId));
+        //    // Ajout des paramètres de la commande
+        //    _command.Parameters.Add(new SqlParameter("@EpisodesId", EpisodesId));
 
-            // Execution de la commande
-            _connection.Open();
-            int nbLignes = _command.ExecuteNonQuery();
+        //    // Execution de la commande
+        //    _connection.Open();
+        //    int nbLignes = _command.ExecuteNonQuery();
 
-            // Libération de l'objet command
-            _command.Dispose();
-            _connection.Close();
+        //    // Libération de l'objet command
+        //    _command.Dispose();
+        //    _connection.Close();
 
-            return nbLignes > 0;
-        }
+        //    return nbLignes > 0;
+        //}
+        #endregion
 
         public override string ToString()
         {
-            return $"{episodesId}\tNameEpisode :{NameEpisode}\tNbEpisodes : {nbEpisodes}\tLien : {Lien}SaisonId : {SaisonId}\tSaisonImg : {SaisonImg}\tSaisonLien : {SaisonLien}\tSaisonAnnees : {SaisonAnnees}";
+            return $"id : {Id}\tNameEpisode :{NameEpisode}\tNbEpisodes : {nbEpisodes}\tLien : {Lien}SaisonId : {SaisonId}\tSaisonImg : {SaisonImg}\tSaisonLien : {SaisonLien}\tSaisonAnnees : {SaisonAnnees}";
         }
 
 
