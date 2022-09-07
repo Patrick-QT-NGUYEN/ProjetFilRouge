@@ -1,83 +1,57 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Netflix_Clone_API_Back.DAO;
+using Netflix_Clone_API_Back.Classes;
+using System.Collections.ObjectModel;
 
 namespace Netflix_Clone_API_Back.Controllers
 {
-    public class SeriesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SeriesController : ControllerBase
     {
-        // GET: SeriesController
-        public ActionResult Index()
+        [HttpGet]
+        // GET: api/<SeriesController>
+        public IEnumerable<Series> Get()
         {
-            return View();
+            List<Series> series = new List<Series>();
+            SeriesDAO seriesDAO = new SeriesDAO();
+            series = seriesDAO.FindAll();
+            return series;
         }
 
         // GET: SeriesController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("{id}")]
+        public Series Get(int id)
         {
-            return View();
+            SeriesDAO seriesDAO = new();
+            return seriesDAO.Find(id).Item2;
         }
 
-        // GET: SeriesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
 
-        // POST: SeriesController/Create
+        // POST: api/SeriesController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public string Post([FromBody] Series series)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            SeriesDAO seriesDAO = new();
+            return seriesDAO.Create(series) > 0 ? "Serie Ajouté" : "Erreur lors de l'ajout";
         }
 
-        // GET: SeriesController/Edit/5
-        public ActionResult Edit(int id)
+        // put: SeriesController/Edit/5
+        [HttpPut("{id}")]
+        public string Put(int Id, [FromBody] Series series)
         {
-            return View();
+            SeriesDAO seriesDAO = new();
+            return seriesDAO.Update(series) ? $"Film n°{series.Id} mis à jour" : "Erreur lors de la mise à jour";
         }
 
-        // POST: SeriesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE: SeriesController/Edit/5
+        [HttpPut("{id}")]
+        public string Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            SeriesDAO seriesDAO = new();
+            return seriesDAO.Delete(id) ? $"Film n°{id} supprimé !" : "Erreur lors de la suppression";
         }
 
-        // GET: SeriesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SeriesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
