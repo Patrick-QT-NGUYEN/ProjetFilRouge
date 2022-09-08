@@ -172,8 +172,6 @@ namespace Netflix_Clone_API_Back.Classes
             return episodes;
         }
 
-
-
         public virtual int Add()
         {
             // Création d'un instance de connection
