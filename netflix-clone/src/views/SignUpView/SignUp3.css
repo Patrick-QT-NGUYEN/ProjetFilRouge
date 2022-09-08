@@ -1,0 +1,17 @@
+.configuration{
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.className{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.config{
+    background-color: white;
+    display: grid;
+    margin: 0 auto;
+    width: 400px;
+}
+
