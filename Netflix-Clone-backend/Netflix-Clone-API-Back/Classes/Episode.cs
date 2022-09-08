@@ -41,7 +41,7 @@
 
         public override string ToString()
         {
-            return $"ID : {Id}\tTitle : {NameEpisodes} \n NbEpisodes : {NbEpisodes} \n Lien : {Lien} \n SaisonId : {SaisonId} \n SaisonImg : {SaisonImg} \n SaisonLien : {SaisonLien} \n SaisonAnnees : {SaisonAnnees}";
+            return $"ID : {Id} \tTitle : {NameEpisodes} \n NbEpisodes : {NbEpisodes} \n Lien : {Lien} \n SaisonId : {SaisonId} \n SaisonImg : {SaisonImg} \n SaisonLien : {SaisonLien} \n SaisonAnnees : {SaisonAnnees}";
         }
 
 

@@ -43,7 +43,7 @@ namespace Netflix_Clone_API_Back.Controllers
         {
             EpisodeDAO episodeDAO=new();
 
-            return episodeDAO.Update(episode) ? $"Episode n°{episode.Id} mis à jour" : "Erreur lors de la mise à jour";
+            return episodeDAO.Update(episode) ? $"Episode n°{episode.Id} mis à jour !" : "Erreur lors de la mise à jour";
         }
 
         // DELETE api/<EpisodeController>/5
@@ -51,7 +51,7 @@ namespace Netflix_Clone_API_Back.Controllers
         public string Delete(int id)
         {
             EpisodeDAO episodeDAO = new();
-            return episodeDAO.Delete(id) ? $"Episode n°{id} supprimé" : "Errreur lors de la suppression";
+            return episodeDAO.Delete(id) ? $"Episode n°{id} supprimé !" : "Errreur lors de la suppression";
         }
     }
 }

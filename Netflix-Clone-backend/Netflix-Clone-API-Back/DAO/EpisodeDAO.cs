@@ -203,6 +203,8 @@ namespace Netflix_Clone_API_Back.DAO
             _command.Dispose();
             _connection.Close();
 
+            //Ok
+
             return nbLignes > 0;
         }
     }
