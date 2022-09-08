@@ -1,13 +1,12 @@
 import React from 'react';
 import "./Nav.scss"
-import MenuIcon from "@material-ui/icons/Menu"
-import SearchIcon from "@material-ui/icons/Search"
-import GiftIcon from "@material-ui/icons/CardGiftcard"
-
-import NotificationsIcon from "@material-ui/icons/Notifications"
+import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faTrash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from 'react';
 
@@ -78,7 +77,7 @@ function Nav() {
                 </a>
                 <a href="/" className="nav__action">
                     {/* <button > */}
-                    <GiftIcon />
+                    <CardGiftcardIcon />
                     {/* </button> */}
                 </a>
                 <a href="/" className="nav__action">
