@@ -147,7 +147,7 @@ namespace Netflix_Clone_API_Back.DAO
         {
             _connection = Connection.New;
 
-            _request = "UPDATE Series SET Name =@Name, Genres = @Genres, Saisons=@Saisons, Episodes=@Episodes, Description =@Description, Status=@Status, ReleaseDate=@ReleaseDate WHERE id=@Id ";
+            _request = "UPDATE Series SET Name = @Name, Genres = @Genres, Saisons = @Saisons, Episodes = @Episodes, Description = @Description, Status = @Status, ReleaseDate = @ReleaseDate WHERE id=@Id ";
 
             _command = new SqlCommand(_request, _connection);
 
@@ -161,7 +161,7 @@ namespace Netflix_Clone_API_Back.DAO
             _command.Parameters.Add(new SqlParameter("@Id", element.Id));
 
             _connection.Open();
-            int nbLignes = -_command.ExecuteNonQuery();
+            int nbLignes = _command.ExecuteNonQuery();
 
             _command.Dispose();
             _connection.Close();

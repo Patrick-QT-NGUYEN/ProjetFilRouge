@@ -42,7 +42,7 @@ namespace Netflix_Clone_API_Back.Controllers
         [HttpPut("{id}")]
         public string Put(int id, [FromBody] Series serie)
         {
-            SeriesDAO serieDAO = new SeriesDAO();
+            SeriesDAO serieDAO = new ();
             return serieDAO.Update(serie) ? $"Série n°{serie.Id} mis à jour" : "Erreur lors de la mise à jour";
         }
 
