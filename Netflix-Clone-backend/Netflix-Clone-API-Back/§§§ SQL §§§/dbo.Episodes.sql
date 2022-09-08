@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Episodes] (
-    [Id]           INT            NOT NULL,
+    [Id]           INT         IDENTITY (1,1)   NOT NULL,
     [NameEpisodes] VARCHAR(100) NULL,
     [NbEpisodes]   INT            NULL,
     [Lien]         VARCHAR(200) NULL,
