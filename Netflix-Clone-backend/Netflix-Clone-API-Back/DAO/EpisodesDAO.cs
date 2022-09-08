@@ -24,7 +24,7 @@ namespace Netflix_Clone_API_Back.DAO
             // Ajout des paramètres de la commande
             //Episode
             _command.Parameters.Add(new SqlParameter("@Id", element.Id));
-            _command.Parameters.Add(new SqlParameter("@NameEpisode", element.NameEpisode));
+            _command.Parameters.Add(new SqlParameter("@NameEpisode", element.NameEpisodes));
             _command.Parameters.Add(new SqlParameter("@NbEpisodes", element.NbEpisodes));
             _command.Parameters.Add(new SqlParameter("@Lien", element.Lien));
             _command.Parameters.Add(new SqlParameter("@SaisonId", element.SaisonId));
@@ -80,14 +80,14 @@ namespace Netflix_Clone_API_Back.DAO
             bool found = false;
 
             _connection = Connection.New;
-            _request = "SELECT e.Id, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
+            _request = "SELECT e.Id, e.NameEpisodes, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
                 "FROM EPISODES AS e" +
                 "WHERE e.id = @Id";
 
             _command = new SqlCommand(_request, _connection);
 
             // Ajout des paramètres de la commande
-            _command.Parameters.Add(new SqlParameter("@Id", id));
+            _command.Parameters.Add(new SqlParameter("@Id", index));
 
             // Ouverture de la connexion
             _connection.Open();
@@ -100,7 +100,7 @@ namespace Netflix_Clone_API_Back.DAO
                 episodes = new Episodes()
                 {
                     Id = _reader.GetInt32(0),
-                    NameEpisode = _reader.GetString(1),
+                    NameEpisodes = _reader.GetString(1),
                     NbEpisodes = _reader.GetInt32(2),
                     Lien = _reader.GetString(3),
                     SaisonId = _reader.GetInt32(4),
@@ -145,9 +145,8 @@ namespace Netflix_Clone_API_Back.DAO
             SqlConnection connection = Connection.New;
 
             // Prépartion de la commande
-            string request = "SELECT e.Id, e.NameEpisode, e.NbEpisodes, e.Lien, e.SaisonId, e.SaisonImg, e.SaisonLien, e.SaisonAnnees" +
-               "FROM EPISODES AS e" +
-               "WHERE e.id = @Id";
+            string request = "SELECT e.Id, e.NameEpisodes, e.NbEpisodes, e.Lien, e.saisonId, e.saisonImg, e.saisonLien, e.saisonAnnees " +
+               "FROM EPISODES AS e";
 
             // Préparation de la commande
             SqlCommand command = new SqlCommand(request, connection);
@@ -160,19 +159,18 @@ namespace Netflix_Clone_API_Back.DAO
 
             while (reader.Read())
             {
-                Episodes film = new Episodes()
+                Episodes episode = new Episodes()
                 {
                     Id = reader.GetInt32(0),
-                    NameEpisode = reader.GetString(1),
+                    NameEpisodes = reader.GetString(1),
                     NbEpisodes = reader.GetInt32(2),
                     Lien = reader.GetString(3),
-
                     SaisonId = reader.GetInt32(4),
                     SaisonImg = reader.GetString(5),
                     SaisonLien = reader.GetString(6),
-                    SaisonAnnees = (DateTime)reader.GetDateTime(7),
+                    SaisonAnnees = (DateTime)reader[7],
                 };
-                episodes.Add(film);
+                episodes.Add(episode);
             }
             reader.Close();
 
@@ -200,7 +198,7 @@ namespace Netflix_Clone_API_Back.DAO
             // Ajout des paramètres de la commande
             //Episode
             _command.Parameters.Add(new SqlParameter("@EpisodesId", element.Id));
-            _command.Parameters.Add(new SqlParameter("@NameEpisode", element.NameEpisode));
+            _command.Parameters.Add(new SqlParameter("@NameEpisode", element.NameEpisodes));
             _command.Parameters.Add(new SqlParameter("@NbEpisodes", element.NbEpisodes));
             _command.Parameters.Add(new SqlParameter("@Lien", element.Lien));
             //Saison

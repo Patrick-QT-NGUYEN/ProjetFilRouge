@@ -1,83 +1,57 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Netflix_Clone_API_Back.Classes;
+using Netflix_Clone_API_Back.DAO;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Netflix_Clone_API_Back.Controllers
 {
-    public class SeriesController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SeriesController : ControllerBase
     {
-        // GET: SeriesController
-        public ActionResult Index()
+        // GET: api/<SeriesController>
+        [HttpGet]
+        public IEnumerable<Series> Get()
         {
-            return View();
+            List<Series> series = new();
+            SeriesDAO seriesDAO = new();
+            series = seriesDAO.FindAll();
+            return series;
         }
 
-        // GET: SeriesController/Details/5
-        public ActionResult Details(int id)
+        // GET api/<SeriesController>/5
+        [HttpGet("{id}")]
+        public Series Get(int id)
         {
-            return View();
+            SeriesDAO seriesDAO = new SeriesDAO();
+
+            return seriesDAO.Find(id).Item2;
         }
 
-        // GET: SeriesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: SeriesController/Create
+        // POST api/<SeriesController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public string Post([FromBody] Series serie)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            SeriesDAO serieDAO = new SeriesDAO();
+
+            return serieDAO.Create(serie)>0 ? "Série ajoutée":"Erreur lors de l'ajout";
         }
 
-        // GET: SeriesController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<SeriesController>/5
+        [HttpPut("{id}")]
+        public string Put(int id, [FromBody] Series serie)
         {
-            return View();
+            SeriesDAO serieDAO = new SeriesDAO();
+            return serieDAO.Update(serie) ? $"Série n°{serie.Id} mis à jour" : "Erreur lors de la mise à jour";
         }
 
-        // POST: SeriesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // DELETE api/<SeriesController>/5
+        [HttpDelete("{id}")]
+        public string Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SeriesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SeriesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            SeriesDAO serieDAO = new SeriesDAO();
+            return serieDAO.Delete(id) ? $"Série n°{id} supprimée" : "Erreur lors de la suppression";
         }
     }
 }
