@@ -1,83 +1,53 @@
-﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Netflix_Clone_API_Back.DAO;
+using Netflix_Clone_API_Back.Classes;
+using System.Collections.ObjectModel;
 
 namespace Netflix_Clone_API_Back.Controllers
 {
-    public class EpisodesController : Controller
+    public class EpisodesController : ControllerBase
     {
         // GET: EpisodesController
-        public ActionResult Index()
+        [HttpGet]
+
+        public IEnumerable<Episodes> Get()
         {
-            return View();
+            List<Episodes> episodes = new List<Episodes>();
+          EpisodesDAO episodesDAO = new EpisodesDAO();
+            episodes = episodesDAO.FindAll();
+            return episodes;
+        }
+        [HttpGet("{id}")]
+        public Episodes Get(int id)
+        {
+           EpisodesDAO episodesDAO = new();
+
+            return episodesDAO.Find(id).Item2;
         }
 
-        // GET: EpisodesController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: EpisodesController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: EpisodesController/Create
+        // POST api/<FilmsController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public string Post([FromBody] Episodes episodes)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            EpisodesDAO episodesDAO = new();
+            return episodesDAO.Create(episodes) > 0 ? "Episode Ajouté" : "Erreur lors de l'ajout";
         }
 
-        // GET: EpisodesController/Edit/5
-        public ActionResult Edit(int id)
+
+        // PUT api/<FilmsController>/5
+        [HttpPut("{id}")]
+        public string Put(int id, [FromBody] Episodes episodes)
         {
-            return View();
+            EpisodesDAO episodesDAO = new();
+            return episodesDAO.Update(episodes) ? $"Episodes n°{episodes.EpisodesId} mis à jour" : "Erreur lors de la mise à jour";
         }
 
-        // POST: EpisodesController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        // PUT api/<FilmsController>/5
+        [HttpPut("{id}")]
+        public string Put(int id, [FromBody] Episodes episodes)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: EpisodesController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: EpisodesController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            EpisodesDAO episodesDAO = new();
+            return episodesDAO.Update(episodes) ? $"Episodes n°{episodes.EpisodesId} mis à jour" : "Erreur lors de la mise à jour";
         }
     }
 }
