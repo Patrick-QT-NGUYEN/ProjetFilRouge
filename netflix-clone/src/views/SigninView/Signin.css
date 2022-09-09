@@ -1,0 +1,60 @@
+.Identification {
+    margin: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+
+}
+
+.Corps {
+    background-image: url(../../../public/img/netflix-background.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh
+}
+
+.Bouton {
+    color: white;
+    background-color: red;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    align-items: center;
+
+
+
+}
+
+.Texte {
+    color: white;
+    background-color: gray;
+    height: 50px;
+    width: 100%;
+    display: grid;
+    position:relative;
+    
+}
+
+
+.Inscription {
+    color: white;
+}
+
+.nvx {
+    color: rgb(136, 135, 135);
+}
+
+.place {
+    background-color: rgba(0, 0, 0, 0.651);
+    padding: 50px 50px 20px 50px;
+}
+
+.image {
+    height: 15%;
+    width: 30%;
+}

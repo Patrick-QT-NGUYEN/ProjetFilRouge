@@ -1,0 +1,113 @@
+.faqFullPage{
+    background: black;
+    position: relative;
+}
+
+
+.faqPage{
+    width:60%;
+    margin: auto;
+}
+
+.faqTitre{
+    background-color: black;
+    color:white;
+    text-align: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3.125rem;
+    margin-bottom: 20px
+}
+
+
+h4 {
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 400
+}
+
+.loginScreen_input {
+    margin: 20px;
+}
+
+.btn_input_login {
+    padding: 10px;
+    outline-width: 0;
+    height: 30px;
+    width: 30%;
+    border: none;
+    max-width: 600px
+}
+
+
+.btn_button_login {
+    padding: 16px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #e50914;
+    border: none;
+    cursor: pointer;
+    font-weight: 600
+}
+
+
+.faqTitre{
+    background-color: black;
+    color:white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.125rem;
+    margin-bottom: 20px
+}
+
+
+h4 {
+    font-size: 1.3rem;
+    font-weight: 400
+}
+
+.loginScreen_input {
+    margin: 20px;
+}
+
+.btn_input_login {
+    padding: 10px;
+    outline-width: 0;
+    height: 30px;
+    width: 30%;
+    border: none;
+    max-width: 600px
+}
+
+
+.btn_button_login {
+    padding: 16px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #e50914;
+    border: none;
+    cursor: pointer;
+    font-weight: 600
+}
+
+
+.itemAccordion{
+    background-color: black;
+    color:white;
+}
+
+
+.headerAccordion{
+    background-color: black;
+    color:white;
+}
+
+.bodyAccordion{
+    background-color: black;
+    color:white;
+}
+
