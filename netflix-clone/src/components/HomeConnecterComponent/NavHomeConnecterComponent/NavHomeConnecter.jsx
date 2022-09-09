@@ -31,16 +31,17 @@ function NavHomeConnecter() {
                 <MenuIcon />
             </button>
             <img src='./img/logo.png' className='nav__logo' alt='Netflix' />
+
             <nav className="nav__links">
                 <a href='/' className='nav__link'>
                     Accueil
                 </a>
 
-                <a href='/' className='nav__link'>
+                <a href='/series' className='nav__link' >
                     Séries
                 </a>
 
-                <a href='/' className='nav__link'>
+                <a href='/Films' className='nav__link'>
                     Films
                 </a>
             </nav>

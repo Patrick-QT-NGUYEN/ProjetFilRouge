@@ -39,9 +39,10 @@ const HomeConnecterComponent = () => {
                 <Row title="Programmes Originaux Netflix" fetchUrl={requests.fetchNetflixOriginals} isPoster={true} />
                 <Row title="Tendances actuelles" fetchUrl={requests.fetchTrending} />
                 <Row title="Les mieux notés" fetchUrl={requests.fetchTopRated} isPoster={true} />
-                <Row title="Films Comédies" fetchUrl={requests.fetchComedyMovies} />
                 <Row title="Films d'action" fetchUrl={requests.fetchHorrorMovies} />
-                
+                <Row title="A venir" fetchUrl={requests.upcoming} />
+                <Row title="Series popular" fetchUrl={requests.tvpopular} isPoster={true}  />
+                <Row title="les mieux notés" fetchUrl={requests.top_rated} />
                 <FooterHomeConnecterComponent />
             {/* <Router>
 
