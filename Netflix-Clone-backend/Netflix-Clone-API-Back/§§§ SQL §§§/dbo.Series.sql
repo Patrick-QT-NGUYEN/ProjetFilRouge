@@ -1,5 +1,5 @@
 ﻿CREATE TABLE [dbo].[Series] (
-    [Id]          INT         NOT NULL,
+    [Id]          INT        IDENTITY (1,1) NOT NULL,
     [name]        NVARCHAR(80)  NULL,
     [genres]      NVARCHAR(80)  NULL,
     [saisons]     INT         NULL,
