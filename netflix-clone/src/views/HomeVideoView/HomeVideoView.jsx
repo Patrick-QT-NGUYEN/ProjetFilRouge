@@ -30,12 +30,14 @@ function AddFilms(Title, Description, Poster, Director, ReleaseDate, trailer, Ge
 
 function UpdateFilms(Id, Title, Description, Poster, Director, ReleaseDate, trailer, Genre) {
     let response = confirm('Voulez-vous vraiment modifier les informations du film n°${id} ?')
+    //eslint-update-line
     if (response)
     updateFilmsApi({Id, Title, Description, Poster, Director, ReleaseDate, trailer, Genre});
 }
 
 function DelecteFilm(id) {
     let response = confirm('Voulez-vous vraiment supprimer le film n°${id} ?')
+    //eslint-disable-line
     if (response)
     deleteFilmApi(id).then(() => FetchData());
 }
