@@ -1,14 +1,6 @@
 import React from 'react';
-import './NavBarComponent.css';
-import HomeConnecterComponent from '../../views/HomeConnecterView/HomeConnecterView';
- 
+import './NavBarComponent.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-    BrowserRouter,
-    Routes,
-    Route,
-    Link
-} from 'react-router-dom';
 import HomeView from '../../views/HomeView/HomeView';
 import HomeVideoView from '../../views/HomeVideoView/HomeVideoView';
 import Signin from '../../views/SigninView/Signin';
@@ -22,6 +14,12 @@ import SignUp7 from '../../views/SignUpView/SignUp7';
 import SignUp8 from '../../views/SignUpView/SignUp8';
 import HomeConnecterView from '../../views/HomeConnecterView/HomeConnecterView'
 import VideoPresentation from '../../views/VideoPresentation/VideoPresentation';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Link
+} from 'react-router-dom';
 
 
 const NavBarComponent = () => {
@@ -56,7 +54,7 @@ const NavBarComponent = () => {
                     <Route path="/SignUp6" element={<SignUp6 />} />
                     <Route path="/SignUp7" element={<SignUp7 />} />
                     <Route path="/SignUp8" element={<SignUp8 />} />
-                    {/* <Route path='../../views/HomeConnecterView/HomeConnecterView' element={<HomeConnecterView/>}/> */}
+                    <Route path='../../views/HomeConnecterView/HomeConnecterView' element={<HomeConnecterView/>}/>
                     <Route path='../../views/VideoPresentation/VideoPresentation' element={<VideoPresentation/>}/>
                 </Routes>
             </BrowserRouter>
