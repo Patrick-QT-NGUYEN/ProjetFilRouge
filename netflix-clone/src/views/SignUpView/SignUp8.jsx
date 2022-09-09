@@ -17,7 +17,7 @@ const SignUp8 = () => {
             <p className="care-text"> Bonjour <strong>User !</strong><br />
                 Vous pouvez commencer à regarder des films et des séries TV dès maitenant.
             </p> <br />
-            <Link className='btn btn-danger form-control' to="/VideoPresentation">Commencer à regarder</Link>
+            <Link className='btn btn-danger form-control' to="/HomeConnecter">Commencer à regarder</Link>
         </div>
     );
 };

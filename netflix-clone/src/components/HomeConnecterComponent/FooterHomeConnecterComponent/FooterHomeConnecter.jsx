@@ -70,4 +70,4 @@ function FooterHomeConnecter(){
     )
 }
 
-
+export default FooterHomeConnecter;

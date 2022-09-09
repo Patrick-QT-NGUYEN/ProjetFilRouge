@@ -1,5 +1,6 @@
 
 
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './HomeVideoView.css';
@@ -10,7 +11,9 @@ const HomeVideoView = () => {
         <div>
             <h1>Hello World</h1>
             <div>Page test pour les videos</div>
+            
         </div>
+        
     );
     
 };

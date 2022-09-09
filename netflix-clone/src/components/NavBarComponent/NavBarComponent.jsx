@@ -54,8 +54,8 @@ const NavBarComponent = () => {
                     <Route path="/SignUp6" element={<SignUp6 />} />
                     <Route path="/SignUp7" element={<SignUp7 />} />
                     <Route path="/SignUp8" element={<SignUp8 />} />
-                    <Route path='../../views/HomeConnecterView/HomeConnecterView' element={<HomeConnecterView/>}/>
-                    <Route path='../../views/VideoPresentation/VideoPresentation' element={<VideoPresentation/>}/>
+                    <Route path='/HomeConnecter' element={<HomeConnecterView/>}/>
+                    <Route path='/VideoPresentation' element={<VideoPresentation/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
