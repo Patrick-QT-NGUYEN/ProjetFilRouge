@@ -3,7 +3,7 @@ DROP TABLE [dbo].[Series]
 
 CREATE TABLE [dbo].[Series]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT IDENTITY(1,1) NOT NULL PRIMARY KEY, 
     [name] NCHAR(80) NULL, 
     [genres] NCHAR(80) NULL, 
     [saisons] INT NULL, 

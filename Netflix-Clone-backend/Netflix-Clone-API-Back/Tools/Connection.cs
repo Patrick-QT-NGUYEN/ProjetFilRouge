@@ -9,7 +9,7 @@ namespace Netflix_Clone_API_Back.Tools
 {
     internal class Connection
     {
-        private static string connectionString = @"Data Source = (LocalDb)\Netflix-Clone; Integrated Security = True";
+        private static string connectionString = @"Data Source=(LOCALDB)\NetflixClone;Integrated Security=True";
         public static SqlConnection New { get => new SqlConnection(connectionString); }
     }
 }
