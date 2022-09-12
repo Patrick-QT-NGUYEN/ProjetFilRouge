@@ -12,6 +12,7 @@ import SignUp5 from '../../views/SignUpView/SignUp5';
 import SignUp6 from '../../views/SignUpView/SignUp6';
 import SignUp7 from '../../views/SignUpView/SignUp7';
 import SignUp8 from '../../views/SignUpView/SignUp8';
+import SeriesView from '../../views/SeriesView/SeriesView';
 import HomeConnecterView from '../../views/HomeConnecterView/HomeConnecterView'
 import VideoPresentation from '../../views/VideoPresentation/VideoPresentation';
 import {
@@ -56,6 +57,8 @@ const NavBarComponent = () => {
                     <Route path="/SignUp8" element={<SignUp8 />} />
                     <Route path='/HomeConnecter' element={<HomeConnecterView/>}/>
                     <Route path='/VideoPresentation' element={<VideoPresentation/>}/>
+                    <Route path='/Series' element={<SeriesView/>}/>
+                    {/* <Route path='/films' element={<VideoPresentation/>}/> */}
                 </Routes>
             </BrowserRouter>
         </div>

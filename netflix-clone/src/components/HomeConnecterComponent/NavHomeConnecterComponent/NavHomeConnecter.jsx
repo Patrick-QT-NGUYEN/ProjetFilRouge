@@ -41,13 +41,16 @@ function NavHomeConnecter() {
                     Séries
                 </a>
 
-                <a href='/Films' className='nav__link'>
+                <a href='/HomeConnecter' className='nav__link'>
                     Films
                 </a>
             </nav>
             <div className='nav__actions'>
                 <a href='/' className='nav__action'>
-                    <SearchIcon />
+                
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />                        
+                    </form>
                 </a>
                 <a href='/' className='nav__action'>
                     Direct
@@ -58,7 +61,7 @@ function NavHomeConnecter() {
                 <a href='/' className='nav__action'>
                     <NotificationsIcon />
                 </a>
-                <a href='/' className='nav__action'>
+                <a href='http://localhost:3000/SignIn' className='nav__action'>
                     <img className='nav__avatar' src='./img/Netflix-avatar.png' />
                 </a>
             </div>

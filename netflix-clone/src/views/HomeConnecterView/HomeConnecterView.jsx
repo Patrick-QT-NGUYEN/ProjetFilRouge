@@ -31,24 +31,32 @@ const HomeConnecterComponent = () => {
     }, [])
     return (
         <div className="HomeConnecter">
+            {/* <Router> */}
+                {/* <Switch> */}
+                    {/* <Routes Exact path='/HomeConnecter'> */}
 
-                <NavHomeConnecterComponent />
-                <BannerHomeConnecter />
+                        <NavHomeConnecterComponent />
+                        <BannerHomeConnecter />
 
-
-                <Row title="Programmes Originaux Netflix" fetchUrl={requests.fetchNetflixOriginals} isPoster={true} />
-                <Row title="Tendances actuelles" fetchUrl={requests.fetchTrending} />
-                <Row title="Les mieux notés" fetchUrl={requests.fetchTopRated} isPoster={true} />
-                <Row title="Films d'action" fetchUrl={requests.fetchHorrorMovies} />
-                <Row title="A venir" fetchUrl={requests.upcoming} />
-                <Row title="Series popular" fetchUrl={requests.tvpopular} isPoster={true}  />
-                <Row title="les mieux notés" fetchUrl={requests.top_rated} />
-                <FooterHomeConnecterComponent />
-            {/* <Router>
-
-            </Router> */}
-
-        </div>
+                        {/* <VideoHomeConnecterComponent /> */}
+                        <Row title="Programmes Originaux Netflix" fetchUrl={requests.fetchNetflixOriginals} isPoster={true} />
+                        <Row title="Tendances actuelles" fetchUrl={requests.fetchTrending} />
+                        <Row title="Les mieux notés" fetchUrl={requests.fetchTopRated} isPoster={true} />
+                        <Row title="Films d'action" fetchUrl={requests.fetchHorrorMovies} />
+                        <Row title="A venir" fetchUrl={requests.upcoming} />
+                        <Row title="Series popular" fetchUrl={requests.tvpopular} isPoster={true} />
+                        <Row title="les mieux notés" fetchUrl={requests.top_rated} />
+                        <FooterHomeConnecterComponent />
+                        {/* <handlePopup path="video/:id" components={VideoHomeConnecterComponent}/> */}
+                    {/* </Routes> */}
+                    {/* <Route> */}
+                        {/* <Route path="video/:id" components={VideoHomeConnecterComponent} />
+                        <Route path="*" /> */}
+                        {/* <Redirect to="/" /> */}
+                    {/* </Route> */}
+                {/* </Switch> */}
+            {/* </Router> */}
+        </div >
     );
 }
 export default HomeConnecterComponent;

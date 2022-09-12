@@ -4,10 +4,12 @@ import { useParams } from "react-router-dom";
 
 
 function VideoHomeConnecter() {
+  
+  let { id } = useParams();
   // Nz5CnNHnpO8
   // ?rel=0&showinfo=0&vq=720;autoplay=1
-  //let { id } = useParams();
-  let id = "8lZki_Z35N0";
+  //let id = "8lZki_Z35N0";
+  console.log(id)
   return (
     <div className="video">
       <iframe

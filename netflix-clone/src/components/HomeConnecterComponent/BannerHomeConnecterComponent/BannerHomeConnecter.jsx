@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; //pour utiliser axios
 import axios from 'axios';
 import "./BannerHomeConnecter.scss";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import requests from '../../../config/Requests';
+import QuickViewHomeConnecter from '../QuickViewHomeConnecterComponent/QuickViewHomeConnecter';
+import { Link } from "react-router-dom";
 
-function BannerHomeConnecter() {
-    const [movie, setMovie] = useState([]);
+function BannerHomeConnecter(bannerStyles) {
+    const [movie, setMovie] = useState([]); //recherche des film et met dzns un tableau (aleatoire)
+    const [popup, setPopup] = useState(false);
+
+    function handlePopup() {
+        popup ? setPopup(false) : setPopup(true);
+        
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -14,7 +22,7 @@ function BannerHomeConnecter() {
 
             setMovie(
                 request.data.results[
-                Math.floor(Math.random() * request.data.results.length - 1)
+                Math.floor(Math.random() * request.data.results.length - 1) //c'est le chemin utiliser par movieDb
                 ]
             );
         }
@@ -22,7 +30,7 @@ function BannerHomeConnecter() {
     }, []);
 
     function truncate(string, n) {
-        return string?.length > n ? string.substr(0, n - 1)+ "..." : string;
+        return string?.length > n ? string.substr(0, n - 1) + "..." : string;
     }
 
 
@@ -43,13 +51,23 @@ function BannerHomeConnecter() {
                     {truncate(movie?.overview, 150)}
                 </p>
                 <div className='banner__buttons'>
-                    <button className='banner__button banner__button--play'>
-                        <PlayArrowIcon /> Lecture
-                    </button>
-                    <button className='banner__button'>
+                    <Link to={`/video/${movie.id}`}>
+                        <button className='banner__button banner__button--play'>
+                            <PlayArrowIcon /> Lecture
+                        </button>
+                    </Link>
+
+                    <button className='banner__button' onClick={handlePopup}>
                         <HelpOutlineIcon /> Plus d'infos</button>
                 </div>
+
             </div>
+            <QuickViewHomeConnecter
+                bannerStyles={bannerStyles}
+                movie={movie}
+                popupStatus={popup}
+                popup={handlePopup}
+            />
         </header>
     )
 }

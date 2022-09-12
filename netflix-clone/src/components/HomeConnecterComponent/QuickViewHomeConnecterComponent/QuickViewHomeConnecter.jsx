@@ -1,18 +1,21 @@
 import React from "react";
 import CancelIcon from '@mui/icons-material/Cancel';
 import "./QuickViewHomeConnecter.scss"
+import BannerHomeConnecter from '../BannerHomeConnecterComponent/BannerHomeConnecter';
+import VideoHomeConnecter from '../VideoHomeConnecterComponent/VideoHomeConnecter';
+import { LocalPlay } from "@mui/icons-material";
 
-
-function QuickViewHomeConnecter({ bannerStyle, movie, popup, popupStatus }) {
+function QuickViewHomeConnecter({ bannerStyles, movie, popup, popupStatus }) {
     return (
       <div className={`quickView ${popupStatus && "open"}`}>
-        <div className="quickView__banner" style={bannerStyle}>
+        <div className="quickView__banner" style={bannerStyles}>
           <div className="quickView__content">
             <h3 className="quickView__title">
               {movie?.title || movie?.name || movie?.original_title}
             </h3>
             <p>{movie?.overview}</p>
-            <p>{movie?.overview}</p>
+            {/* <p>{movie.id.LocalPlay()}</p> */}
+            {/* <p>{movie?.VideoHomeConnecter()}</p> */}
             <p>{movie?.overview}</p>
             <p>{movie?.overview}</p>
             <p>{movie?.overview}</p>
@@ -27,4 +30,4 @@ function QuickViewHomeConnecter({ bannerStyle, movie, popup, popupStatus }) {
     )
   }
   
-  export default QuickViewHomeConnecter
+  export default QuickViewHomeConnecter;
